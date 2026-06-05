@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKRM — Where Proximity Shapes Possibility</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0A0A0A;
+            --surface: #131313;
+            --card: #1A1A1A;
+            --white: #FFFFFF;
+            --text: #D4D4D4;
+            --muted: #7A7A7A;
+            --border: rgba(255,255,255,0.07);
+            --accent: #D4A853;
+            --accent-glow: rgba(212,168,83,0.15);
+            --serif: 'DM Serif Display', Georgia, serif;
+            --sans: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.8rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10,10,10,0.92);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.5em;
+            color: var(--white);
+        }
+        .logo-sub {
+            display: block;
+            font-size: 0.48rem;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            text-align: center;
+            margin-top: 2px;
+        }
+        .nav-btn {
+            padding: 0.8rem 2.2rem;
+            background: var(--accent);
+            border: none;
+            color: var(--bg);
+            font-family: var(--sans);
+            font-size: 0.78rem;
+            font-weight: 500;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            box-shadow: 0 0 30px var(--accent-glow);
+            transform: scale(1.03);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10rem 2rem 6rem;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-family: var(--sans);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative; z-index: 1;
+        }
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 520px;
+            line-height: 1.8;
+            font-weight: 300;
+            position: relative; z-index: 1;
+        }
+        .hero-badge {
+            margin-top: 4rem;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+            position: relative; z-index: 1;
+        }
+
+        /* UTILITY */
+        .section-break {
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.6rem;
+            letter-spacing: 0.25em;
+            color: var(--muted);
+            text-transform: uppercase;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+            margin: 1.5rem auto 2rem;
+            opacity: 0.7;
+        }
+
+        /* WELCOME */
+        .welcome {
+            padding: 8rem 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .welcome .eyebrow {
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .welcome h2 {
+            font-family: var(--sans);
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--white);
+            margin-bottom: 2.5rem;
+        }
+        .welcome p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 2;
+            margin-bottom: 1.2rem;
+        }
+        .quote-block {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .quote-block blockquote {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        .quote-block cite {
+            font-style: normal;
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+        }
+
+        /* EXPERIENCE */
+        .experience {
+            padding: 8rem 2rem;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .experience h2 {
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            letter-spacing: 0.4em;
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 4rem;
+        }
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .exp-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border);
+        }
+        .exp-card:last-child { border-right: none; }
+        .exp-card h3 {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        .exp-card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+        .exp-quote {
+            text-align: center;
+            max-width: 600px;
+            margin: 4rem auto 0;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+        .exp-quote blockquote {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        .exp-quote cite {
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            font-style: normal;
+        }
+
+        /* WHO IS IN THE ROOM */
+        .room {
+            padding: 8rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .room h2 {
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            letter-spacing: 0.4em;
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        .room .sub {
+            text-align: center;
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 4rem;
+        }
+        .room-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        .room-col h3 {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+        }
+        .room-col ul {
+            list-style: none;
+        }
+        .room-col ul li {
+            font-size: 0.88rem;
+            color: var(--muted);
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+        .room-col ul li:last-child { border-bottom: none; }
+        .room-quote {
+            text-align: center;
+            padding-top: 4rem;
+            grid-column: 1 / -1;
+        }
+        .room-quote blockquote {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        .room-quote cite {
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            font-style: normal;
+        }
+
+        /* PARTNERSHIP */
+        .partnership {
+            padding: 8rem 2rem;
+            background: var(--card);
+            text-align: center;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .partnership .eyebrow {
+            font-size: 0.6rem;
+            letter-spacing: 0.25em;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .partnership h2 {
+            font-family: var(--sans);
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            margin-bottom: 4rem;
+            color: var(--white);
+        }
+        .partnership h2 span { color: var(--accent); }
+        .partner-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 950px;
+            margin: 0 auto 3rem;
+        }
+        .partner-feat {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+        .partner-feat h4 {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .partner-feat p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* WHY SECTION */
+        .why {
+            padding: 8rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .why h2 {
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            color: var(--white);
+            margin-bottom: 3rem;
+        }
+        .why ul {
+            list-style: none;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .why ul li {
+            font-size: 0.92rem;
+            color: var(--muted);
+            padding: 0.7rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.7;
+        }
+        .why ul li::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 1.1rem;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .why .note {
+            margin-top: 2rem;
+            font-size: 0.92rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        /* FOUNDER */
+        .founder {
+            padding: 8rem 2rem;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+        .founder-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .founder h2 {
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .founder p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 2;
+            margin-bottom: 1.2rem;
+        }
+        .founder-sign {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .founder-sign .name {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+        .founder-sign .title {
+            font-size: 0.78rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 10rem 2rem;
+            text-align: center;
+        }
+        .contact h2 {
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            color: var(--white);
+            margin-bottom: 3rem;
+        }
+        .btn-primary {
+            padding: 1rem 3rem;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            font-family: var(--sans);
+            font-size: 0.82rem;
+            font-weight: 500;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 3rem;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 10px 40px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+        .contact-details {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .contact-details a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+        .contact-details a:hover { color: var(--accent); }
+
+        /* FOOTER */
+        footer {
+            padding: 3rem 4rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-brand {
+            font-size: 0.85rem;
+            letter-spacing: 0.5em;
+            color: var(--accent);
+        }
+        .footer-copy {
+            font-size: 0.7rem;
+            color: var(--muted);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav { padding: 1.5rem 2rem; }
+            .exp-grid { grid-template-columns: 1fr 1fr; }
+            .exp-card { border-right: none; border-bottom: 1px solid var(--border); }
+            .room-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .partner-features { grid-template-columns: 1fr; }
+            footer { flex-direction: column; gap: 1rem; }
+        }
+        @media (max-width: 500px) {
+            .exp-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">B K R M<span class="logo-sub">PRIVATE COMMUNITY</span></div>
+        <button class="nav-btn">Request Access</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>BACKROOM</h1>
+        <p>A private, curated room of founders, innovators, and decision-makers shaping business and culture.</p>
+        <div class="hero-badge">Presented by BackRoom</div>
+    </section>
+
+    <!-- WELCOME -->
+    <section class="welcome">
+        <p class="eyebrow">Welcome to</p>
+        <h2>BACKROOM</h2>
+        <p>BackRoom was built on a simple principle: proximity determines outcomes. The right room doesn't just create connection — it accelerates opportunity.</p>
+        <p>We bring together founders, innovators, and decision-makers who are shaping industries and building legacies.</p>
+        <p>Through bespoke experiences, we foster the relationships that turn ideas into impact.</p>
+        <div class="quote-block">
+            <blockquote>"Outcomes change when the room changes."</blockquote>
+            <cite>— BackRoom</cite>
+        </div>
+    </section>
+
+    <div class="section-break">Presented by BackRoom</div>
+
+    <!-- THE EXPERIENCE -->
+    <section class="experience">
+        <h2>THE EXPERIENCE</h2>
+        <div class="exp-grid">
+            <div class="exp-card">
+                <h3>Private Dinners</h3>
+                <p>Intentionally crafted dinners within a high-trust environment.</p>
+            </div>
+            <div class="exp-card">
+                <h3>Executive Retreats</h3>
+                <p>Small-group off-sites focused on restoration and peer exchange.</p>
+            </div>
+            <div class="exp-card">
+                <h3>Roundtable Discussions</h3>
+                <p>Closed-door sessions with founders scaling $1M+ sharing growth playbooks.</p>
+            </div>
+            <div class="exp-card">
+                <h3>Cultural Access</h3>
+                <p>Private access to invite-only experiences across art, dining, and emerging spaces.</p>
+            </div>
+        </div>
+        <div class="exp-quote">
+            <blockquote>"Growth happens faster in spaces where knowledge is shared, not guarded."</blockquote>
+            <cite>— BackRoom</cite>
+        </div>
+    </section>
+
+    <div class="section-break">Presented by BackRoom</div>
+
+    <!-- WHO IS IN THE ROOM -->
+    <section class="room">
+        <h2>WHO IS IN THE ROOM</h2>
+        <p class="sub">Founders, Innovators, and Decision-Makers</p>
+        <div class="room-grid">
+            <div class="room-col">
+                <h3>Across Sectors</h3>
+                <ul>
+                    <li>Technology, AI & Emerging Innovation</li>
+                    <li>Health, Longevity & Human Performance</li>
+                    <li>Finance, Private Equity & Venture Capital</li>
+                    <li>Creative, Branding & Cultural Leadership</li>
+                </ul>
+            </div>
+            <div class="room-col">
+                <h3>Defined by Behavior</h3>
+                <ul>
+                    <li>Selective about where they show up</li>
+                    <li>Invest in environments aligned with their standard</li>
+                    <li>Value proximity to other high-caliber builders</li>
+                    <li>Move through trusted networks, not open rooms</li>
+                </ul>
+            </div>
+            <div class="room-quote">
+                <blockquote>"The best businesses aren't built in silos — they're built in community."</blockquote>
+                <cite>— BackRoom</cite>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-break">Presented by BackRoom</div>
+
+    <!-- PORSCHE PARTNERSHIP -->
+    <section class="partnership">
+        <p class="eyebrow">Soft Launch Partnership</p>
+        <h2>PORSCHE STUDIO <span>×</span> BACKROOM</h2>
+        <div class="partner-features">
+            <div class="partner-feat">
+                <h4>HIGH-VALUE AUDIENCE</h4>
+                <p>Porsche Studio Chevy Chase becomes the setting for a curated room — placing the brand directly inside a high-value network of founders, innovators, and decision-makers.</p>
+            </div>
+            <div class="partner-feat">
+                <h4>EXCLUSIVE SETTING</h4>
+                <p>An intimate, premium environment that aligns with Porsche's commitment to precision and excellence.</p>
+            </div>
+            <div class="partner-feat">
+                <h4>BRAND ALIGNMENT</h4>
+                <p>Natural resonance between Porsche's identity and our audience — innovation, performance, and understated status.</p>
+            </div>
+        </div>
+        <div class="quote-block">
+            <blockquote>"Experience becomes shared wisdom and shared wisdom becomes leverage."</blockquote>
+            <cite>— BackRoom</cite>
+        </div>
+    </section>
+
+    <!-- WHY THIS AUDIENCE -->
+    <section class="why">
+        <h2>WHY THIS AUDIENCE MATTERS TO PORSCHE</h2>
+        <ul>
+            <li>Founders and innovators with strong earning power and upward mobility</li>
+            <li>Early adopters of premium and performance-driven brands</li>
+            <li>Natural alignment with Porsche's identity: Precision, Innovation, Understated status</li>
+            <li>Influence that extends beyond the room through trusted networks</li>
+        </ul>
+        <p class="note">This audience isn't reached through traditional marketing. It's accessed through proximity and environment.</p>
+        <div class="quote-block">
+            <blockquote>"Where you are — and who you're around — shapes what's possible."</blockquote>
+            <cite>— BackRoom</cite>
+        </div>
+    </section>
+
+    <div class="section-break">Presented by BackRoom</div>
+
+    <!-- FROM THE FOUNDER -->
+    <section class="founder">
+        <div class="founder-inner">
+            <h2>FROM THE FOUNDER</h2>
+            <p>Proximity shapes possibility. It's a belief that has guided everything behind BackRoom.</p>
+            <p>I come from a family of individuals who chose a different path. It began with my grandmother, who left Trinidad to build a life in the United States — despite skepticism — reshaping the trajectory of our family for generations.</p>
+            <p>Her decision set in motion a legacy rooted in ambition, education, and entrepreneurship. Growing up in that environment, I saw firsthand how proximity — to opportunity, to information, to the right people — can change everything.</p>
+            <p>That legacy lives on in me.</p>
+            <p>I've always been drawn to spaces where conversations around ideas, business, and ambition are the norm — not the exception. But those spaces are rare. BackRoom exists to create them.</p>
+            <p>It's an intentional environment where founders and operators connect — not just on what they're building, but what it takes to build.</p>
+            <p>When the right people come together, something shifts — ideas move faster, conversations go deeper, and possibility expands.</p>
+            <p>This is where the people changing the world find each other.</p>
+            <div class="founder-sign">
+                <div class="name">Ashanti Callender</div>
+                <div class="title">Founder, BackRoom</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact">
+        <h2>REQUEST MORE INFORMATION</h2>
+        <button class="btn-primary">Request Access</button>
+        <div class="contact-details">
+            <a href="mailto:INFO@BKRM.IO">INFO@BKRM.IO</a>
+            <a href="tel:7183447128">718-344-7128</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-brand">B K R M</div>
+        <div class="footer-copy">&copy; <script>document.write(new Date().getFullYear())</script> BackRoom. All rights reserved.</div>
+    </footer>
+
+</body>
+</html>
