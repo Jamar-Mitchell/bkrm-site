@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+/* Theme D - Gold (default) */
+:root,
+[data-theme="d"] {
+  --white: #FFFFFF;
+  --black: #0F0F0F;
+  --text: #333333;
+  --muted: #6B6B6B;
+  --light: #F9F9F9;
+  --border: #E8E8E8;
+  --accent: #C9A84C;
+  --accent-dark: #B8942F;
+  --accent-light: #E8D48B;
+  --accent-bg: #0a1628;
+  --accent-surface: #0d1f3c;
+  --gold: #C9A84C;
+  --gold-dark: #B8942F;
+  --gold-light: #E8D48B;
+  --gold-bg: #0a1628;
+  --gold-surface: #0d1f3c;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --body-bg: #FFFFFF;
+  --hero-bg: linear-gradient(160deg, #0a1628 0%, #0d1f3c 30%, #0a1628 60%, #060e1a 100%);
+  --hero-text: #C9A84C;
+  --nav-bg: rgba(10, 22, 40, 0.97);
+}
+
+/* Theme A - Clean Mint */
+[data-theme="a"] {
+  --accent: #3EDBB0;
+  --accent-dark: #2EB898;
+  --accent-light: #7EECD0;
+  --accent-bg: #0A2E25;
+  --accent-surface: #143D32;
+  --gold: #3EDBB0;
+  --gold-dark: #2EB898;
+  --gold-light: #7EECD0;
+  --gold-bg: #0A2E25;
+  --gold-surface: #143D32;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --body-bg: #FFFFFF;
+  --hero-bg: linear-gradient(160deg, #0A2E25 0%, #143D32 30%, #0A2E25 60%, #051A15 100%);
+  --hero-text: #3EDBB0;
+  --nav-bg: rgba(10, 46, 37, 0.97);
+}
+
+/* Theme B - Dark Gold Luxury */
+[data-theme="b"] {
+  --white: #F5F0E8;
+  --black: #F5F0E8;
+  --text: #D4C9B8;
+  --muted: #A89880;
+  --light: #1A1A1A;
+  --border: #333333;
+  --accent: #D4A853;
+  --accent-dark: #B8902F;
+  --accent-light: #E8C87B;
+  --accent-bg: #0D0D0D;
+  --accent-surface: #1A1A1A;
+  --gold: #D4A853;
+  --gold-dark: #B8902F;
+  --gold-light: #E8C87B;
+  --gold-bg: #0D0D0D;
+  --gold-surface: #1A1A1A;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --body-bg: #111111;
+  --hero-bg: linear-gradient(160deg, #0D0D0D 0%, #1A1A1A 30%, #0D0D0D 60%, #000000 100%);
+  --hero-text: #D4A853;
+  --nav-bg: rgba(13, 13, 13, 0.97);
+}
+
+/* Theme C - Warm Earthy */
+[data-theme="c"] {
+  --accent: #B8432F;
+  --accent-dark: #8C3022;
+  --accent-light: #D4715F;
+  --accent-bg: #2A0E09;
+  --accent-surface: #3D1812;
+  --gold: #B8432F;
+  --gold-dark: #8C3022;
+  --gold-light: #D4715F;
+  --gold-bg: #2A0E09;
+  --gold-surface: #3D1812;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Instrument Sans', -apple-system, sans-serif;
+  --body-bg: #FFFFFF;
+  --hero-bg: linear-gradient(160deg, #2A0E09 0%, #3D1812 30%, #2A0E09 60%, #1A0805 100%);
+  --hero-text: #B8432F;
+  --nav-bg: rgba(42, 14, 9, 0.97);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--body-bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 0.4s, color 0.4s;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Selection */
+::selection {
+  background: var(--gold);
+  color: var(--gold-bg);
+}

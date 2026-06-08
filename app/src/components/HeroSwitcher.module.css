@@ -1,0 +1,47 @@
+.switcher {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.8rem;
+  background: rgba(15, 15, 15, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.label {
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.options {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.btn {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+  border-radius: 100px;
+  transition: all 0.2s;
+  font-family: var(--sans);
+}
+
+.btn:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.active {
+  background: var(--gold);
+  color: var(--gold-bg) !important;
+  font-weight: 600;
+}

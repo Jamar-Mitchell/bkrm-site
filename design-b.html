@@ -31,12 +31,75 @@
             overflow-x: hidden;
         }
 
+        /* ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.25s; }
+        .reveal-delay-3 { transition-delay: 0.35s; }
+        .reveal-delay-4 { transition-delay: 0.45s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.25; }
+        }
+
+        /* PARALLAX */
+        .parallax-section {
+            position: relative;
+            height: 55vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .parallax-bg {
+            position: absolute;
+            top: -20%;
+            left: 0;
+            width: 100%;
+            height: 140%;
+            object-fit: cover;
+            will-change: transform;
+        }
+        .parallax-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.6), rgba(10,10,10,0.8));
+        }
+        .parallax-text {
+            position: relative;
+            z-index: 2;
+            color: var(--accent);
+            text-align: center;
+            font-family: var(--serif);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-style: italic;
+            max-width: 700px;
+            padding: 0 2rem;
+        }
+
         /* NAV */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.8rem 4rem;
+            padding: 1.2rem 4rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,19 +108,10 @@
             backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border);
         }
-        .logo {
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.5em;
-            color: var(--white);
-        }
-        .logo-sub {
-            display: block;
-            font-size: 0.48rem;
-            letter-spacing: 0.15em;
-            color: var(--muted);
-            text-align: center;
-            margin-top: 2px;
+        .logo-img {
+            height: 40px;
+            width: auto;
+            filter: brightness(0) invert(1);
         }
         .nav-btn {
             padding: 0.8rem 2.2rem;
@@ -86,6 +140,7 @@
             text-align: center;
             padding: 10rem 2rem 6rem;
             position: relative;
+            overflow: hidden;
         }
         .hero::after {
             content: '';
@@ -96,6 +151,14 @@
             width: 500px; height: 500px;
             background: radial-gradient(circle, var(--accent-glow), transparent 70%);
             pointer-events: none;
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=80') center/cover no-repeat;
+            opacity: 0.08;
+            will-change: transform;
         }
         .hero h1 {
             font-family: var(--sans);
@@ -105,6 +168,7 @@
             margin-bottom: 2rem;
             color: var(--white);
             position: relative; z-index: 1;
+            animation: fadeInUp 1s ease forwards;
         }
         .hero p {
             font-size: 1.05rem;
@@ -113,6 +177,8 @@
             line-height: 1.8;
             font-weight: 300;
             position: relative; z-index: 1;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
         }
         .hero-badge {
             margin-top: 4rem;
@@ -120,6 +186,8 @@
             letter-spacing: 0.2em;
             color: var(--muted);
             position: relative; z-index: 1;
+            animation: fadeIn 1s ease 0.5s forwards;
+            opacity: 0;
         }
 
         /* UTILITY */
@@ -140,6 +208,45 @@
             margin: 1.5rem auto 2rem;
             opacity: 0.7;
         }
+
+        /* GALLERY */
+        .gallery {
+            padding: 3rem 0;
+            overflow: hidden;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .gallery-track {
+            display: flex;
+            gap: 1rem;
+            padding: 0 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        .gallery-track::-webkit-scrollbar { display: none; }
+        .gallery-item {
+            flex: 0 0 380px;
+            height: 260px;
+            border-radius: 4px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            position: relative;
+        }
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,10,10,0.5), transparent);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.05); }
 
         /* WELCOME */
         .welcome {
@@ -215,8 +322,28 @@
             text-align: center;
             padding: 3rem 2rem;
             border-right: 1px solid var(--border);
+            transition: all 0.4s ease;
         }
         .exp-card:last-child { border-right: none; }
+        .exp-card:hover {
+            background: var(--card);
+            transform: translateY(-3px);
+        }
+        .exp-card-img {
+            width: 100%;
+            height: 120px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        .exp-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+            transition: filter 0.3s;
+        }
+        .exp-card:hover .exp-card-img img { filter: brightness(1); }
         .exp-card h3 {
             font-family: var(--serif);
             font-size: 1.15rem;
@@ -282,9 +409,7 @@
             color: var(--white);
             margin-bottom: 1.2rem;
         }
-        .room-col ul {
-            list-style: none;
-        }
+        .room-col ul { list-style: none; }
         .room-col ul li {
             font-size: 0.88rem;
             color: var(--muted);
@@ -347,6 +472,11 @@
             padding: 2rem;
             border: 1px solid var(--border);
             border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .partner-feat:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
         }
         .partner-feat h4 {
             font-size: 0.65rem;
@@ -420,6 +550,27 @@
             color: var(--accent);
             margin-bottom: 3rem;
             text-align: center;
+        }
+        .founder-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .founder-headshot {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 40px var(--accent-glow);
+            flex-shrink: 0;
+        }
+        .founder-intro {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            color: var(--white);
+            line-height: 1.5;
         }
         .founder p {
             font-size: 0.95rem;
@@ -508,40 +659,56 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            nav { padding: 1.5rem 2rem; }
+            nav { padding: 1.2rem 2rem; }
+            .logo-img { height: 32px; }
             .exp-grid { grid-template-columns: 1fr 1fr; }
             .exp-card { border-right: none; border-bottom: 1px solid var(--border); }
             .room-grid { grid-template-columns: 1fr; gap: 2rem; }
             .partner-features { grid-template-columns: 1fr; }
+            .founder-header { flex-direction: column; text-align: center; }
+            .gallery-item { flex: 0 0 300px; height: 220px; }
             footer { flex-direction: column; gap: 1rem; }
         }
         @media (max-width: 500px) {
             .exp-grid { grid-template-columns: 1fr; }
+            .parallax-section { height: 40vh; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">B K R M<span class="logo-sub">PRIVATE COMMUNITY</span></div>
+        <img src="BackRoom Logo.jpg" alt="BKRM" class="logo-img">
         <button class="nav-btn">Request Access</button>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
+        <div class="hero-bg"></div>
         <h1>BACKROOM</h1>
         <p>A private, curated room of founders, innovators, and decision-makers shaping business and culture.</p>
         <div class="hero-badge">Presented by BackRoom</div>
     </section>
 
+    <!-- GALLERY -->
+    <section class="gallery reveal">
+        <div class="gallery-track">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&q=80" alt="Event"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=700&q=80" alt="Gathering"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=700&q=80" alt="Experience"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=700&q=80" alt="Networking"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80" alt="Discussion"></div>
+        </div>
+    </section>
+
     <!-- WELCOME -->
     <section class="welcome">
-        <p class="eyebrow">Welcome to</p>
-        <h2>BACKROOM</h2>
-        <p>BackRoom was built on a simple principle: proximity determines outcomes. The right room doesn't just create connection — it accelerates opportunity.</p>
-        <p>We bring together founders, innovators, and decision-makers who are shaping industries and building legacies.</p>
-        <p>Through bespoke experiences, we foster the relationships that turn ideas into impact.</p>
-        <div class="quote-block">
+        <p class="eyebrow reveal">Welcome to</p>
+        <h2 class="reveal reveal-delay-1">BACKROOM</h2>
+        <p class="reveal reveal-delay-2">BackRoom was built on a simple principle: proximity determines outcomes. The right room doesn't just create connection — it accelerates opportunity.</p>
+        <p class="reveal reveal-delay-2">We bring together founders, innovators, and decision-makers who are shaping industries and building legacies.</p>
+        <p class="reveal reveal-delay-2">Through bespoke experiences, we foster the relationships that turn ideas into impact.</p>
+        <div class="quote-block reveal reveal-delay-3">
             <blockquote>"Outcomes change when the room changes."</blockquote>
             <cite>— BackRoom</cite>
         </div>
@@ -549,28 +716,39 @@
 
     <div class="section-break">Presented by BackRoom</div>
 
+    <!-- PARALLAX BREAK -->
+    <section class="parallax-section">
+        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1920&q=80" alt="" class="parallax-bg" data-parallax>
+        <div class="parallax-overlay"></div>
+        <p class="parallax-text">"Proximity determines outcomes."</p>
+    </section>
+
     <!-- THE EXPERIENCE -->
     <section class="experience">
-        <h2>THE EXPERIENCE</h2>
+        <h2 class="reveal">THE EXPERIENCE</h2>
         <div class="exp-grid">
-            <div class="exp-card">
+            <div class="exp-card reveal reveal-delay-1">
+                <div class="exp-card-img"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=80" alt="Private Dinner"></div>
                 <h3>Private Dinners</h3>
                 <p>Intentionally crafted dinners within a high-trust environment.</p>
             </div>
-            <div class="exp-card">
+            <div class="exp-card reveal reveal-delay-2">
+                <div class="exp-card-img"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=500&q=80" alt="Retreat"></div>
                 <h3>Executive Retreats</h3>
                 <p>Small-group off-sites focused on restoration and peer exchange.</p>
             </div>
-            <div class="exp-card">
+            <div class="exp-card reveal reveal-delay-3">
+                <div class="exp-card-img"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="Roundtable"></div>
                 <h3>Roundtable Discussions</h3>
                 <p>Closed-door sessions with founders scaling $1M+ sharing growth playbooks.</p>
             </div>
-            <div class="exp-card">
+            <div class="exp-card reveal reveal-delay-4">
+                <div class="exp-card-img"><img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=500&q=80" alt="Culture"></div>
                 <h3>Cultural Access</h3>
                 <p>Private access to invite-only experiences across art, dining, and emerging spaces.</p>
             </div>
         </div>
-        <div class="exp-quote">
+        <div class="exp-quote reveal">
             <blockquote>"Growth happens faster in spaces where knowledge is shared, not guarded."</blockquote>
             <cite>— BackRoom</cite>
         </div>
@@ -580,10 +758,10 @@
 
     <!-- WHO IS IN THE ROOM -->
     <section class="room">
-        <h2>WHO IS IN THE ROOM</h2>
-        <p class="sub">Founders, Innovators, and Decision-Makers</p>
+        <h2 class="reveal">WHO IS IN THE ROOM</h2>
+        <p class="sub reveal reveal-delay-1">Founders, Innovators, and Decision-Makers</p>
         <div class="room-grid">
-            <div class="room-col">
+            <div class="room-col reveal reveal-delay-1">
                 <h3>Across Sectors</h3>
                 <ul>
                     <li>Technology, AI & Emerging Innovation</li>
@@ -592,7 +770,7 @@
                     <li>Creative, Branding & Cultural Leadership</li>
                 </ul>
             </div>
-            <div class="room-col">
+            <div class="room-col reveal reveal-delay-2">
                 <h3>Defined by Behavior</h3>
                 <ul>
                     <li>Selective about where they show up</li>
@@ -601,7 +779,7 @@
                     <li>Move through trusted networks, not open rooms</li>
                 </ul>
             </div>
-            <div class="room-quote">
+            <div class="room-quote reveal reveal-delay-3">
                 <blockquote>"The best businesses aren't built in silos — they're built in community."</blockquote>
                 <cite>— BackRoom</cite>
             </div>
@@ -610,25 +788,32 @@
 
     <div class="section-break">Presented by BackRoom</div>
 
+    <!-- PARALLAX BREAK -->
+    <section class="parallax-section">
+        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1920&q=80" alt="" class="parallax-bg" data-parallax>
+        <div class="parallax-overlay"></div>
+        <p class="parallax-text">"The right room accelerates everything."</p>
+    </section>
+
     <!-- PORSCHE PARTNERSHIP -->
     <section class="partnership">
-        <p class="eyebrow">Soft Launch Partnership</p>
-        <h2>PORSCHE STUDIO <span>×</span> BACKROOM</h2>
+        <p class="eyebrow reveal">Soft Launch Partnership</p>
+        <h2 class="reveal reveal-delay-1">PORSCHE STUDIO <span>×</span> BACKROOM</h2>
         <div class="partner-features">
-            <div class="partner-feat">
+            <div class="partner-feat reveal reveal-delay-1">
                 <h4>HIGH-VALUE AUDIENCE</h4>
                 <p>Porsche Studio Chevy Chase becomes the setting for a curated room — placing the brand directly inside a high-value network of founders, innovators, and decision-makers.</p>
             </div>
-            <div class="partner-feat">
+            <div class="partner-feat reveal reveal-delay-2">
                 <h4>EXCLUSIVE SETTING</h4>
                 <p>An intimate, premium environment that aligns with Porsche's commitment to precision and excellence.</p>
             </div>
-            <div class="partner-feat">
+            <div class="partner-feat reveal reveal-delay-3">
                 <h4>BRAND ALIGNMENT</h4>
                 <p>Natural resonance between Porsche's identity and our audience — innovation, performance, and understated status.</p>
             </div>
         </div>
-        <div class="quote-block">
+        <div class="quote-block reveal">
             <blockquote>"Experience becomes shared wisdom and shared wisdom becomes leverage."</blockquote>
             <cite>— BackRoom</cite>
         </div>
@@ -636,15 +821,15 @@
 
     <!-- WHY THIS AUDIENCE -->
     <section class="why">
-        <h2>WHY THIS AUDIENCE MATTERS TO PORSCHE</h2>
-        <ul>
+        <h2 class="reveal">WHY THIS AUDIENCE MATTERS TO PORSCHE</h2>
+        <ul class="reveal reveal-delay-1">
             <li>Founders and innovators with strong earning power and upward mobility</li>
             <li>Early adopters of premium and performance-driven brands</li>
             <li>Natural alignment with Porsche's identity: Precision, Innovation, Understated status</li>
             <li>Influence that extends beyond the room through trusted networks</li>
         </ul>
-        <p class="note">This audience isn't reached through traditional marketing. It's accessed through proximity and environment.</p>
-        <div class="quote-block">
+        <p class="note reveal reveal-delay-2">This audience isn't reached through traditional marketing. It's accessed through proximity and environment.</p>
+        <div class="quote-block reveal reveal-delay-3">
             <blockquote>"Where you are — and who you're around — shapes what's possible."</blockquote>
             <cite>— BackRoom</cite>
         </div>
@@ -655,16 +840,19 @@
     <!-- FROM THE FOUNDER -->
     <section class="founder">
         <div class="founder-inner">
-            <h2>FROM THE FOUNDER</h2>
-            <p>Proximity shapes possibility. It's a belief that has guided everything behind BackRoom.</p>
-            <p>I come from a family of individuals who chose a different path. It began with my grandmother, who left Trinidad to build a life in the United States — despite skepticism — reshaping the trajectory of our family for generations.</p>
-            <p>Her decision set in motion a legacy rooted in ambition, education, and entrepreneurship. Growing up in that environment, I saw firsthand how proximity — to opportunity, to information, to the right people — can change everything.</p>
-            <p>That legacy lives on in me.</p>
-            <p>I've always been drawn to spaces where conversations around ideas, business, and ambition are the norm — not the exception. But those spaces are rare. BackRoom exists to create them.</p>
-            <p>It's an intentional environment where founders and operators connect — not just on what they're building, but what it takes to build.</p>
-            <p>When the right people come together, something shifts — ideas move faster, conversations go deeper, and possibility expands.</p>
-            <p>This is where the people changing the world find each other.</p>
-            <div class="founder-sign">
+            <h2 class="reveal">FROM THE FOUNDER</h2>
+            <div class="founder-header reveal reveal-delay-1">
+                <img src="headshot.jpeg" alt="Ashanti Callender" class="founder-headshot">
+                <p class="founder-intro">Proximity shapes possibility. It's a belief that has guided everything behind BackRoom.</p>
+            </div>
+            <p class="reveal reveal-delay-2">I come from a family of individuals who chose a different path. It began with my grandmother, who left Trinidad to build a life in the United States — despite skepticism — reshaping the trajectory of our family for generations.</p>
+            <p class="reveal reveal-delay-2">Her decision set in motion a legacy rooted in ambition, education, and entrepreneurship. Growing up in that environment, I saw firsthand how proximity — to opportunity, to information, to the right people — can change everything.</p>
+            <p class="reveal reveal-delay-2">That legacy lives on in me.</p>
+            <p class="reveal reveal-delay-2">I've always been drawn to spaces where conversations around ideas, business, and ambition are the norm — not the exception. But those spaces are rare. BackRoom exists to create them.</p>
+            <p class="reveal reveal-delay-2">It's an intentional environment where founders and operators connect — not just on what they're building, but what it takes to build.</p>
+            <p class="reveal reveal-delay-2">When the right people come together, something shifts — ideas move faster, conversations go deeper, and possibility expands.</p>
+            <p class="reveal reveal-delay-2">This is where the people changing the world find each other.</p>
+            <div class="founder-sign reveal reveal-delay-3">
                 <div class="name">Ashanti Callender</div>
                 <div class="title">Founder, BackRoom</div>
             </div>
@@ -673,9 +861,9 @@
 
     <!-- CONTACT -->
     <section class="contact">
-        <h2>REQUEST MORE INFORMATION</h2>
-        <button class="btn-primary">Request Access</button>
-        <div class="contact-details">
+        <h2 class="reveal">REQUEST MORE INFORMATION</h2>
+        <button class="btn-primary reveal reveal-delay-1">Request Access</button>
+        <div class="contact-details reveal reveal-delay-2">
             <a href="mailto:INFO@BKRM.IO">INFO@BKRM.IO</a>
             <a href="tel:7183447128">718-344-7128</a>
         </div>
@@ -686,6 +874,35 @@
         <div class="footer-brand">B K R M</div>
         <div class="footer-copy">&copy; <script>document.write(new Date().getFullYear())</script> BackRoom. All rights reserved.</div>
     </footer>
+
+    <script>
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Parallax
+        const parallaxElements = document.querySelectorAll('[data-parallax]');
+        const heroBg = document.querySelector('.hero-bg');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.pageYOffset;
+            if (heroBg) {
+                heroBg.style.transform = 'translateY(' + (scrollY * 0.3) + 'px)';
+            }
+            parallaxElements.forEach(el => {
+                const rect = el.parentElement.getBoundingClientRect();
+                const yPos = rect.top * 0.4;
+                el.style.transform = 'translateY(' + yPos + 'px)';
+            });
+        }, { passive: true });
+    </script>
 
 </body>
 </html>

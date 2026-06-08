@@ -1,0 +1,25 @@
+.footer {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: var(--gold-bg);
+}
+
+.brand {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.brand span {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+.copy {
+  font-size: 0.7rem;
+  color: rgba(201, 168, 76, 0.4);
+  letter-spacing: 0.1em;
+}
