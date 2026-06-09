@@ -17,7 +17,7 @@ export default function Contact() {
 
       <RevealOnScroll delay={0.2}>
         <div className={styles.cta}>
-          <Button>Request Access</Button>
+          <a href="https://form.typeform.com/to/VsSeEVzN" target="_blank" rel="noopener noreferrer"><Button>Request Access</Button></a>
         </div>
       </RevealOnScroll>
 

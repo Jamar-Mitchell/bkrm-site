@@ -82,11 +82,11 @@ function App() {
       <div id="partnership"><Partnership /></div>
       <WhyThisAudience />
       <SectionBreak />
-      <div id="founder"><Founder /></div>
+      {/* <div id="founder"><Founder /></div> */}
       <div id="contact"><Contact /></div>
       <Footer />
-      <ThemeSwitcher />
-      <HeroSwitcher />
+      {/* <ThemeSwitcher /> */}
+      {/* <HeroSwitcher /> */}
       </HeroProvider>
     </ThemeProvider>
   )

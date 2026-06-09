@@ -4,7 +4,7 @@ const heroes = ['default', 'split', 'minimal', 'typewriter', 'photo']
 const HeroContext = createContext()
 
 export function HeroProvider({ children }) {
-  const [heroVariant, setHeroVariant] = useState('default')
+  const [heroVariant, setHeroVariant] = useState('minimal')
   return (
     <HeroContext.Provider value={{ heroVariant, setHeroVariant, heroes }}>
       {children}

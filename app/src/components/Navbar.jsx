@@ -43,7 +43,7 @@ export default function Navbar() {
           </ul>
 
           <div className={styles.right}>
-            <button className={styles.btn}>Request Access</button>
+            <a href="https://form.typeform.com/to/VsSeEVzN" target="_blank" rel="noopener noreferrer" className={styles.btn}>Request Access</a>
             <button
               className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ''}`}
               onClick={() => setMenuOpen(!menuOpen)}
@@ -69,9 +69,9 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <button className={styles.mobileBtn} onClick={() => setMenuOpen(false)}>
+        <a href="https://form.typeform.com/to/VsSeEVzN" target="_blank" rel="noopener noreferrer" className={styles.mobileBtn} onClick={() => setMenuOpen(false)}>
           Request Access
-        </button>
+        </a>
       </div>
     </>
   )

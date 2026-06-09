@@ -39,7 +39,7 @@ export default function HeroSplit() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <button className={styles.btn}>Request Access</button>
+          <a href="https://form.typeform.com/to/VsSeEVzN" target="_blank" rel="noopener noreferrer" className={styles.btn}>Request Access</a>
           <span className={styles.note}>By invitation only</span>
         </motion.div>
       </div>
