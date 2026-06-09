@@ -7,7 +7,7 @@ export default function Founder() {
       <RevealOnScroll>
         <div className={styles.intro}>
           <div className={styles.imageWrap}>
-            <img src="/headshot.jpeg" alt="Ashanti Callender" className={styles.image} />
+            <img src={`${import.meta.env.BASE_URL}headshot.jpeg`} alt="Ashanti Callender" className={styles.image} />
           </div>
           <div className={styles.introText}>
             <p className={styles.eyebrow}>Founder</p>

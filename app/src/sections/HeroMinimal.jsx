@@ -21,7 +21,7 @@ export default function HeroMinimal() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.3, ease: [0.25, 1, 0.5, 1] }}
         >
-          <img src="/backroom-logo.jpg" alt="BKRM" />
+          <img src={`${import.meta.env.BASE_URL}backroom-logo.jpg`} alt="BKRM" />
         </motion.div>
       </div>
 

@@ -20,7 +20,7 @@ export default function HeroSplit() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 1, 0.5, 1] }}
         >
-          <img src="/backroom-logo.jpg" alt="BKRM" />
+          <img src={`${import.meta.env.BASE_URL}backroom-logo.jpg`} alt="BKRM" />
         </motion.div>
 
         <motion.p
