@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 56" fill="currentColor">
+  <!-- B - geometric, architectural -->
+  <path d="M0 0 h3 v56 h-3z"/>
+  <path d="M3 0 h16 c9 0 15 5.5 15 13.5 S28 27 19 27 h-16 v-3 h16 c7 0 12-4 12-10.5 S25 3 19 3 H3z"/>
+  <path d="M3 27 h17 c9.5 0 16 5.5 16 14.5 S29.5 56 20 56 H3 v-3 h17 c7.5 0 13-4.5 13-11.5 S27.5 30 20 30 H3z"/>
+
+  <!-- K - clean angled arms -->
+  <path d="M52 0 h3 v56 h-3z"/>
+  <path d="M55 28 L76 0 h4 L59 28z"/>
+  <path d="M59 28 L80 56 h-4 L55 28z"/>
+
+  <!-- R - signature cut-leg style -->
+  <path d="M96 0 h3 v56 h-3z"/>
+  <path d="M99 0 h16 c10 0 16 6 16 14.5 c0 8.5-6 14.5-16 14.5 H99 v-3 h16 c8 0 13-4.5 13-11.5 S123 3 115 3 H99z"/>
+  <!-- Leg with gap/cut -->
+  <path d="M113 29 l4 5"/>
+  <path d="M121 40 l11 16 h-4 l-11-16z"/>
+
+  <!-- M - sharp peaks -->
+  <path d="M146 0 h3 v56 h-3z"/>
+  <path d="M149 0 l19 40 l19-40 h3 v56 h-3 V10 l-19 40 h-1 L149 10 v46 h0"/>
+  <path d="M187 0 h3 v56 h-3z"/>
+</svg>

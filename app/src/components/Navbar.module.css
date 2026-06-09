@@ -152,6 +152,14 @@
   pointer-events: all;
 }
 
+.mobileBrand {
+  font-family: var(--sans);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+}
+
 .mobileLinks {
   list-style: none;
   padding: 0;
@@ -210,12 +218,5 @@
 @media (max-width: 768px) {
   .nav {
     padding: 1rem 1.5rem;
-  }
-  .logoImg {
-    height: 28px;
-    width: 28px;
-  }
-  .logoText {
-    display: none;
   }
 }

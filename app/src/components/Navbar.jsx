@@ -28,6 +28,14 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault()
+    const target = document.querySelector(href)
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
@@ -37,7 +45,7 @@ export default function Navbar() {
           <ul className={styles.links}>
             {links.map(link => (
               <li key={link.href}>
-                <a href={link.href} className={styles.link}>{link.label}</a>
+                <a href={link.href} className={styles.link} onClick={(e) => handleNavClick(e, link.href)}>{link.label}</a>
               </li>
             ))}
           </ul>
@@ -62,7 +70,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 className={styles.mobileLink}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => { handleNavClick(e, link.href); setMenuOpen(false) }}
               >
                 {link.label}
               </a>
