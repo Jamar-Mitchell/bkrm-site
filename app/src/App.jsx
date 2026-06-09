@@ -68,7 +68,7 @@ function App() {
       <div id="about"><Welcome /></div>
       <SectionBreak />
       <ParallaxImage
-        src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1920&q=80"
+        src={`${import.meta.env.BASE_URL}bkrm-1.jpg`}
         quote="Proximity determines outcomes."
       />
       <div id="experience"><Experience /></div>
@@ -76,7 +76,7 @@ function App() {
       <div id="members"><WhoIsInTheRoom /></div>
       <SectionBreak />
       <ParallaxImage
-        src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=1920&q=80"
+        src={`${import.meta.env.BASE_URL}bkrm-6.jpg`}
         quote="The right room accelerates everything."
       />
       <div id="partnership"><Partnership /></div>

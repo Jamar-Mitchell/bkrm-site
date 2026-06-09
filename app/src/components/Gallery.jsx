@@ -3,12 +3,12 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import styles from './Gallery.module.css'
 
 const images = [
-  { src: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=700&q=80', alt: 'Event' },
-  { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80', alt: 'Gathering' },
-  { src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=700&q=80', alt: 'Networking' },
-  { src: 'https://images.unsplash.com/photo-1591115765373-5f9cf1da241c?w=700&q=80', alt: 'Discussion' },
-  { src: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=700&q=80', alt: 'Dinner' },
-  { src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&q=80', alt: 'Night' },
+  { src: `${import.meta.env.BASE_URL}bkrm-2.jpg`, alt: 'Dinner' },
+  { src: `${import.meta.env.BASE_URL}bkrm-3.jpg`, alt: 'Networking' },
+  { src: `${import.meta.env.BASE_URL}bkrm-4.jpg`, alt: 'Gathering' },
+  { src: `${import.meta.env.BASE_URL}bkrm-5.jpg`, alt: 'Connection' },
+  { src: `${import.meta.env.BASE_URL}bkrm-7.jpg`, alt: 'Event' },
+  { src: `${import.meta.env.BASE_URL}bkrm-8.jpg`, alt: 'Gala' },
 ]
 
 export default function Gallery() {

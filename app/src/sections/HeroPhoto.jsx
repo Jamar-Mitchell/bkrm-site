@@ -6,7 +6,7 @@ export default function HeroPhoto() {
     <section className={styles.hero}>
       <div className={styles.image}>
         <img
-          src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1920&q=80"
+          src={`${import.meta.env.BASE_URL}bkrm-8.jpg`}
           alt="Event"
         />
       </div>
