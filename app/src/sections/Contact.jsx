@@ -17,7 +17,7 @@ export default function Contact() {
 
       <RevealOnScroll delay={0.2}>
         <div className={styles.cta}>
-          <a href="https://form.typeform.com/to/VsSeEVzN" target="_blank" rel="noopener noreferrer"><Button>Reserve Your Seat</Button></a>
+          <a href="https://posh.vip/e/backroom-the-executive-table" target="_blank" rel="noopener noreferrer"><Button>Reserve Your Seat</Button></a>
         </div>
       </RevealOnScroll>
 

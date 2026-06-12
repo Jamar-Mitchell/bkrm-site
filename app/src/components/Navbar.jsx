@@ -51,7 +51,7 @@ export default function Navbar() {
           </ul>
 
           <div className={styles.right}>
-            <a href="https://form.typeform.com/to/VsSeEVzN" target="_blank" rel="noopener noreferrer" className={styles.btn}>Request Access</a>
+            <a href="https://posh.vip/e/backroom-the-executive-table" target="_blank" rel="noopener noreferrer" className={styles.btn}>Reserve Your Seat</a>
             <button
               className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ''}`}
               onClick={() => setMenuOpen(!menuOpen)}
@@ -77,7 +77,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <a href="https://form.typeform.com/to/VsSeEVzN" target="_blank" rel="noopener noreferrer" className={styles.mobileBtn} onClick={() => setMenuOpen(false)}>
+        <a href="https://posh.vip/e/backroom-the-executive-table" target="_blank" rel="noopener noreferrer" className={styles.mobileBtn} onClick={() => setMenuOpen(false)}>
           Request Access
         </a>
       </div>

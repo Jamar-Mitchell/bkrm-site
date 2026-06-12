@@ -38,7 +38,7 @@ export default function Partnership() {
 
       <RevealOnScroll delay={0.35}>
         <div className={styles.cta}>
-          <a href="https://form.typeform.com/to/VsSeEVzN" target="_blank" rel="noopener noreferrer">
+          <a href="https://posh.vip/e/backroom-the-executive-table" target="_blank" rel="noopener noreferrer">
             <Button>Reserve Your Seat</Button>
           </a>
         </div>
