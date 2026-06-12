@@ -10,7 +10,7 @@ export default function HeroMinimal() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        Private · Curated · Intentional
+        Connected • Elevated • Intentional
       </motion.p>
 
       <div className={styles.logoWrap}>
@@ -38,7 +38,7 @@ export default function HeroMinimal() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.0 }}
       >
-        For Those Building Whats Next
+        For those building what's next
       </motion.p>
 
       <motion.div

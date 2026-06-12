@@ -4,8 +4,8 @@ import styles from './Navbar.module.css'
 const links = [
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Events', href: '#events' },
   { label: 'Members', href: '#members' },
-  { label: 'Partnership', href: '#partnership' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -40,7 +40,7 @@ export default function Navbar() {
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.navInner}>
-          <span className={styles.logoText}>BKRM</span>
+          <img src={`${import.meta.env.BASE_URL}backroom-wordmark.svg`} alt="BKRM" className={styles.logoText} />
 
           <ul className={styles.links}>
             {links.map(link => (

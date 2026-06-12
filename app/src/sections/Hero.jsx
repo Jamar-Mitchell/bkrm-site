@@ -59,7 +59,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.65 }}
         >
-          For Those Building Whats Next
+          For those building what's next
         </motion.p>
       </motion.div>
 

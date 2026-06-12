@@ -3,10 +3,10 @@ import QuoteBlock from '../components/QuoteBlock'
 import styles from './WhyThisAudience.module.css'
 
 const reasons = [
-  'They choose rooms — not algorithms',
-  'They respond to texture, craft, and curatorial authority',
-  'They invest in people before they invest in pitches',
-  'They build through trust-based proximity',
+  'Intentional about where they invest their time and energy',
+  'Seeking environments that match their ambition',
+  'Investing in people before pitches',
+  'Valuing meaningful connection over surface-level networking',
 ]
 
 export default function WhyThisAudience() {
@@ -18,7 +18,7 @@ export default function WhyThisAudience() {
 
       <RevealOnScroll delay={0.1}>
         <p className={styles.sub}>
-          Our members are not defined solely by income — they are defined by intention.
+          Backroom brings together individuals who value intention over noise.
         </p>
       </RevealOnScroll>
 
@@ -32,13 +32,9 @@ export default function WhyThisAudience() {
 
       <RevealOnScroll delay={0.3}>
         <p className={styles.note}>
-          BackRoom isn't a network. It's a trusted ecosystem for ambitious builders 
-          who demand elevated spaces — and deliver impact in return.
+          Backroom isn't a network. It's a community for ambitious builders
+          who demand elevated spaces—and deliver impact in return.
         </p>
-      </RevealOnScroll>
-
-      <RevealOnScroll delay={0.35}>
-        <QuoteBlock quote="Success isn't solo — it's relational. Who you're in the room with is how far you'll go." />
       </RevealOnScroll>
     </section>
   )

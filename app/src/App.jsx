@@ -73,13 +73,12 @@ function App() {
       />
       <div id="experience"><Experience /></div>
       <SectionBreak />
-      <div id="members"><WhoIsInTheRoom /></div>
-      <SectionBreak />
+      <div id="events"><Partnership /></div>
       <ParallaxImage
         src={`${import.meta.env.BASE_URL}bkrm-6.jpg`}
         quote="The right room accelerates everything."
       />
-      <div id="partnership"><Partnership /></div>
+      <div id="members"><WhoIsInTheRoom /></div>
       <WhyThisAudience />
       <SectionBreak />
       {/* <div id="founder"><Founder /></div> */}

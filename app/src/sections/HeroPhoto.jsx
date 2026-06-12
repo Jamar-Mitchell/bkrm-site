@@ -50,7 +50,7 @@ export default function HeroPhoto() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.0 }}
       >
-        <span>For Those Building Whats Next</span>
+        <span>For those building what's next</span>
       </motion.div>
     </section>
   )

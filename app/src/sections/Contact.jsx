@@ -11,13 +11,13 @@ export default function Contact() {
 
       <RevealOnScroll delay={0.1}>
         <p className={styles.body}>
-          BackRoom is for those who move with intention. If that's you, let's connect.
+          Backroom is built for those shaping what's next. If that's you, join us at the table.
         </p>
       </RevealOnScroll>
 
       <RevealOnScroll delay={0.2}>
         <div className={styles.cta}>
-          <a href="https://form.typeform.com/to/VsSeEVzN" target="_blank" rel="noopener noreferrer"><Button>Request Access</Button></a>
+          <a href="https://form.typeform.com/to/VsSeEVzN" target="_blank" rel="noopener noreferrer"><Button>Reserve Your Seat</Button></a>
         </div>
       </RevealOnScroll>
 

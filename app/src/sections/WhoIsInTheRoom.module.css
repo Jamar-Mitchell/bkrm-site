@@ -60,3 +60,13 @@
     gap: 2rem;
   }
 }
+
+.membership {
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-top: 4rem;
+  font-weight: 500;
+}

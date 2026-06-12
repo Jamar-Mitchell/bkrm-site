@@ -10,10 +10,10 @@ const sectors = [
 ]
 
 const behaviors = [
-  'Selective about where they show up',
-  'Invest in environments aligned with their standard',
-  'Value proximity to other high-caliber builders',
-  'Move through trusted networks, not open rooms',
+  'Intentional about where they show up',
+  'Invest in environments aligned with their values and ambition',
+  'Value meaningful connection over surface-level interaction',
+  'Seek out rooms that challenge and expand their thinking',
 ]
 
 export default function WhoIsInTheRoom() {
@@ -24,7 +24,7 @@ export default function WhoIsInTheRoom() {
       </RevealOnScroll>
 
       <RevealOnScroll delay={0.1}>
-        <p className={styles.sub}>Founders, Innovators, and Decision-Makers</p>
+        <p className={styles.sub}>Founders, Decision-Makers, and Changemakers</p>
       </RevealOnScroll>
 
       <div className={styles.grid}>
@@ -52,7 +52,7 @@ export default function WhoIsInTheRoom() {
       </div>
 
       <RevealOnScroll delay={0.35}>
-        <QuoteBlock quote="The best businesses aren't built in silos — they're built in community." />
+        <p className={styles.membership}>Membership available starting Fall 2026</p>
       </RevealOnScroll>
     </section>
   )

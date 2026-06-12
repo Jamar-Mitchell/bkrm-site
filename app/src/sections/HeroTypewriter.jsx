@@ -61,7 +61,7 @@ export default function HeroTypewriter() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.6 }}
         >
-          For Those Building Whats Next
+          For those building what's next
         </motion.p>
       </div>
     </section>

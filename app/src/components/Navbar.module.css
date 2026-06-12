@@ -39,11 +39,8 @@
 }
 
 .logoText {
-  font-family: var(--sans);
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  color: var(--gold);
+  height: 14px;
+  width: auto;
 }
 
 .links {

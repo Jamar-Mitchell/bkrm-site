@@ -6,7 +6,7 @@ import styles from './Experience.module.css'
 const experiences = [
   {
     title: 'Private Dinners',
-    description: 'Intentionally crafted dinners within a high-trust environment.',
+    description: 'Intentionally crafted dinners prioritizing community and entrepreneurial collaboration.',
     image: `${import.meta.env.BASE_URL}bkrm-2.jpg`,
   },
   {
